@@ -40,16 +40,16 @@ class NetworkManager(base.ManagerWithFind):
 
 @utils.arg('network_id', metavar='<network_id>', help='ID of network')
 def do_network(cs, args):
-    """
-    Show a network
+    """Show a network
+
     """
     network = cs.os_networksv2_python_novaclient_ext.get(args.network_id)
     utils.print_dict(network._info)
 
 
 def do_network_list(cs, args):
-    """
-    List networks
+    """List networks
+
     """
     networks = cs.os_networksv2_python_novaclient_ext.list()
     utils.print_list(networks, ['ID', 'Label', 'CIDR'])
@@ -61,17 +61,17 @@ def do_network_list(cs, args):
            help='IP block to allocate from (ex. 172.16.0.0/24 or '
                 '2001:DB8::/64)')
 def do_network_create(cs, args):
-    """
-    Create a network
+    """Create a network
+
     """
     network = cs.os_networksv2_python_novaclient_ext.create(args.label,
-                                                           args.cidr)
+                                                            args.cidr)
     utils.print_dict(network._info)
 
 
 @utils.arg('network_id', metavar='<network_id>', help='ID of network')
 def do_network_delete(cs, args):
-    """
-    Delete a network
+    """Delete a network
+
     """
     cs.os_networksv2_python_novaclient_ext.delete(args.network_id)
