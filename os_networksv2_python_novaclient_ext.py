@@ -47,6 +47,15 @@ def do_network(cs, args):
     utils.print_dict(network._info)
 
 
+@utils.arg('network_id', metavar='<network_id>', help='ID of network')
+def do_network_show(cs, args):
+    """Show a network
+
+    """
+    network = cs.os_networksv2_python_novaclient_ext.get(args.network_id)
+    utils.print_dict(network._info)
+
+
 def do_network_list(cs, args):
     """List networks
 
